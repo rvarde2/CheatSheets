@@ -1,0 +1,88 @@
+﻿GDB
+
+
+Use -g flag during compilation
+e.g. g++ -g -o test test.cpp
+
+
+1. gdb ./<name of the binary>
+2. Execute program normally: run
+3. Breakpoint: break <line number>, break <function name>
+4. Executing statement by statement after breakpoint recursively: s
+5. Executing statement by statement after breakpoint: n
+6. Continue running normally after breakpoint: continue
+7. Display nearby code: list
+8. Display code while executing statements one by one: layout next, layout src, ctrl+x a
+9. Clear breakpoint: clear
+10.  Refresh gdb code panel: refresh
+11.  Get Variables in the scope of execution point:
+1. All Variables: info variables
+2. Local Variables: info locals
+3. Function Arguments: info args
+12.  Break when there is a change in variable value: watch <variable name>
+13.  Modify variable value: set <variable name> = <new value>
+14.  Backtrace from point of a program crash: bt
+15. Check information about current thread: info thread
+16. Go to a specific thread: thread <thread no.>
+17. Printing array in gdb: p <arrayName>@<arrayLength>
+
+
+STRACE
+
+
+
+
+# Various System Calls: man syscalls
+1. execv: execute a file
+2. fstat: get file status
+3. read: 
+4. write: 
+5. mmap: map or unmap files or devices into memory
+6. br: 
+7. open: 
+8. close: 
+9. ioctl: 
+10. fork: 
+11. clone: 
+12. socket: 
+
+
+* Dumping output to a file: strace -o <outFile> <Command/Process>
+
+
+* Looking for specific system call: 
+strace -e trace=<specific syscall> <Command/Process>
+Time of execution of specific system call:
+strace -t -e trace=<specific syscall> <Command/Process>
+Time required for execution of specific system call:
+strace -r -e trace=<specific syscall> <Command/Process>
+
+
+* Check if command uses specific file: strace -P <absolute path of the file> <Command/Process>
+
+
+* Follow already running process: -f: follow, -p: pid
+Get pid by ps -ef
+strace -f -p <pid>
+
+
+* Calculate counts for all system calls: -c: count, -w: time summary 
+strace -c -w <Command/Process>
+
+
+
+
+
+
+LTRACE
+
+
+
+
+
+
+Tracing Library Calls
+
+
+Count no. of instances for library call: -c
+Display system call as well as library calls: -S

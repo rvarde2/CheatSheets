@@ -1,0 +1,32 @@
+﻿Sed
+
+
+
+
+1. sed ‘’ <filename> : Prints Pattern Buffer
+2. sed -r ‘’ <filename> : Prints Pattern Buffer with extended regex flag enable
+3. sed -e ‘<expression 1>’ -e ‘<expression 2>’ <filename> : Multiple sed expressions
+4. sed -n -r ‘<expression>’ <filename> : Don’t print Pattern buffer only print output of expression 
+5. sed -n -e ‘2d’: Print everything but the second line
+6. sed -n -e ‘2,4d’: Print everything but the lines from 2 to 4 both inclusive
+7. sed -n -e ‘2p’: Only print second line
+8. sed -r ‘/<pattern>/d’ <filename>: Don’t print line containing given pattern
+9. sed -n -r ‘/<pattern>/p’ <filename>: Only print line containing given pattern 
+10.  sed  -r ‘s/<pattern 1>/<pattern 2>/’ : Replace only first pattern 1 by pattern 2 in line
+11.  sed  -r ‘s/<pattern 1>/<pattern 2>/g’ : Replace all pattern 1 by pattern 2 in line
+12.  sed  -r ‘s/<pattern 1>/<pattern 2>/gi’ : Replace all case insensitive pattern 1 by pattern 2 in line
+13.  sed  -r ‘s/<pattern>/gi’: Drops the pattern from the line
+14.  sed  -r ‘1 s/<pattern>/gi’: Drops the global case insensitive pattern from first line only
+15. sed  -r ‘1,4 s/<pattern>/gi’: Drops the global case insensitive pattern from line 1 to 4 both inclusive
+16. sed  -r ‘1,+2 s/<pattern>/gi’: Drops the global case insensitive pattern from line 1 and 2 more lines after that
+17. sed  -r ‘5,$ s/<pattern>/gi’: Drops the global case insensitive pattern from line 5 till end of the file
+18.  sed  -r ‘s/<pattern1>/<pattern2>/gi’ <filename> > <edited_filename> : Getting changes in file
+19.  sed -i -r ‘s/<pattern1>/<pattern2>/gi’ <filename> : getting changes in the same file (Not recommended) 
+
+
+
+
+While
+
+
+cat <filename> | while read <var>: do <instruction e.g. echo $<var> >; done

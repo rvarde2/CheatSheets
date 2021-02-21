@@ -1,0 +1,45 @@
+﻿* Vim KeyBindings:
+
+
+1. Vim Command Mode: Esc
+2. Insert Mode: i
+3. Vertical Split: Ctrl+w v
+4. Horizontal Split: Ctrl+w s 
+5. Navigation across windows: Ctrl+w <arrow_key> 
+6. Quit the window: Ctrl+w q
+7. Autocompletion/Suggestion: Ctrl+n, Ctrl+n to traverse across, start typing normally for selection and ESC for cancel 
+8. NERDTree: F2 (Custom)
+9. Navigating across tabs: gt
+10. Text selection: Go to start of text and press v or V for complete line then go to end text selection and hit the required action button
+11. Action after text selection:
+   1. Delete: d
+   2. Copy: y
+   3. Cut: c
+   4. Undo: u
+   5. Redo: Ctrl+ r
+12. Paste: Go to the desired location and press p
+13. Find and Replace:
+        :s/foo/bar/g:                 Change each ‘foo’ to ‘bar’ in the current line
+        :%s/foo/bar/g:                 Change each ‘foo’ to ‘bar’ in all the  lines
+        :5,12s/foo/bar/g:         Change each ‘foo’ to ‘bar’ in the lines from 5 to 12
+
+
+14. Going to function definition: gd from a function call
+15. Going to function definition using ctags: Ctrl+] (definition), Ctrl+o(Previous location of the cursor before the jump)
+
+
+
+
+* Vim Commands:
+1. Show line number: set number
+2. Open file in new Tab: tabnew <filename>
+3. Navigating across tabs: tabp, tabn, tabfirst, tablast
+4. Naming the tab:
+5. Rearranging tab: tabm <Tab Number>
+6. Go to a specific line number: <Line Number>
+7. Find Text:
+   1. /<string to be searched>, n for next and N for previous: Forward
+   2. ?/<string to be searched>, n for next and N for previous: Backward
+
+
+8.
