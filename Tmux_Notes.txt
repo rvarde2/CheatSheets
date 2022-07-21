@@ -1,0 +1,14 @@
+*Detaching from the sessions
+Ctrl+b d
+
+*List all tmux sessions
+tmux ls
+
+*Attaching to the tmux sessions
+tmux a -t <session name or number>
+
+*Create new tmux session
+1) Without name
+tmux new 
+2) With name
+tmux new -s <session name>

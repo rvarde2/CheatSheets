@@ -1,0 +1,70 @@
+You load P4 Program on switch and generate or receive traffic on surfers
+
+# Example Programs for various functionalities:
+$BASE = /root/bf-sde-9.2.0/pkgsrc/p4-examples/p4_16_programs/
+
+
+# Compiling the Code: On switch, from the directory of program
+~/tools/p4_build.sh <name of the program>.p4
+
+After successful compilation folder will be generated at /root/bf-sde-9.2.0/install/share/tofinopd/
+
+
+# Running a program: From tmux session
+./run_switchd.sh -p<program name without .p4 extension>
+
+Should get bfshell> prompt
+
+
+# Enable ports and links, Provide IPs, from tmux session, bfshell>
+1) bfshell> ucli
+
+2) bf-sde> pm # Port Management
+
+3) bf-sde.pm >  port-add -/- 100G NONE 
+ 
+port-add <-:all ports>/<-:all links> <link speed> <NONE: Don’t do error correction>
+
+4) bf-sde.pm> an-set -/- 2 # Autonegotiation Set
+
+5) bf.sde.pm> port-enb -/-  # Enable Ports
+
+Now check for surfer1 check interface:enp101s0f0
+To find which port is connected to whom: bf.sde.pm> show
+
+
+# Manually add the arp entries, From respective surfers
+~/.set_up_clients.py -c surfer<1-4> -topo network_topo.yml
+
+
+# Adding entries to table
+1) bfshell > bfrt_python
+
+2) bfrt_root> import basic_switch_entries 
+
+This Python file contains entries. Use this as template and create file in ~/bf-sde-9.2.0/install/lib/python3.4 folder
+
+3) bfrt_root> basic_switch_entries.insert_entries(bfrt)
+
+To check out entries generated in table:
+bfrt_root>bfrt.tna_exact_match.pipe.SwitchIngress.dump(table=True,from_hw=True)
+from_hw=True is required when counters are used, this will give updated values
+
+
+# Example Traffic Generators and Receivers 
+surfer 2-4 are servers:  
+Set MTU for jumbo files
+1) sudo ip link set enp101s0f0 mtu 9216 
+
+2) ./iperf_server.py –topo network_topo.yml –server surfer2 –client surfer1 -t 10 –rate 100 
+rate argument is just filename 
+
+surfer1 is client
+3)./iperf_client.py -c surfer1 -s surfer2 -t network_topo.yml –rate 10 --time 10
+
+
+
+
+
+
+
